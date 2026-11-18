@@ -1,0 +1,15 @@
+{
+  "casa": "Cambios El Dorado",
+  "fecha": "2026-11-16",
+  "monedaBase": "COP",
+  "comisionPorcentaje": 0.02,
+  "monedas": [
+    { "codigo": "COP", "nombre": "Peso colombiano", "trm": 1 },
+    { "codigo": "USD", "nombre": "Dólar estadounidense", "trm": 3316.64 },
+    { "codigo": "EUR", "nombre": "Euro", "trm": 3658.23 },
+    { "codigo": "MXN", "nombre": "Peso mexicano", "trm": 178.84 },
+    { "codigo": "GTQ", "nombre": "Quetzal guatemalteco", "trm": 433.42 }
+  ]
+}
+
+

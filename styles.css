@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --principal: #111111;
+    --texto: #171717;
+    --muted: #777777;
+    --fondo: #f4f4f4;
+    --borde: #dddddd;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+}
+
+.topbar {
+    min-height: 68px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--principal);
+    color: #fff;
+}
+
+.topbar strong {
+    font-size: 17px;
+}
+
+.topbar > span {
+    color: #cccccc;
+    font-size: 13px;
+}
+
+.page-shell {
+    max-width: 920px;
+    margin: 38px auto;
+    padding: 0 16px;
+}
+
+.intro {
+    margin-bottom: 22px;
+}
+
+.intro h1 {
+    margin: 0 0 6px;
+    color: var(--principal);
+    font-size: 28px;
+}
+
+.intro-copy {
+    margin: 0;
+    color: var(--muted);
+}
+
+.workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-card,
+.result-card {
+    padding: 22px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    background: #fff;
+}
+
+.form-card h2,
+.result-card h2 {
+    margin: 0 0 16px;
+    color: var(--principal);
+    font-size: 17px;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field span {
+    color: #555555;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 7px;
+    background: #fff;
+    color: var(--texto);
+    font: inherit;
+    outline: none;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #111111;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid var(--borde);
+}
+
+.source-fieldset {
+    margin: 18px 0;
+    padding: 0;
+    border: 0;
+}
+
+.source-fieldset legend {
+    margin-bottom: 9px;
+    color: #555555;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.source-options {
+    display: flex;
+    gap: 18px;
+}
+
+.source-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #555555;
+    font-size: 13px;
+}
+
+.source-option input {
+    accent-color: var(--principal);
+}
+
+.form-message {
+    min-height: 18px;
+    margin: 12px 0;
+    color: #222222;
+    font-size: 13px;
+}
+
+.calculate-button {
+    width: 100%;
+    min-height: 44px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--principal);
+    color: #fff;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.calculate-button:hover {
+    background: #000000;
+}
+
+.calculate-button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.form-footnote {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+.result-placeholder {
+    min-height: 170px;
+    display: flex;
+    align-items: center;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+#resultado-inicial[hidden],
+#contenido-resultado[hidden] {
+    display: none;
+}
+
+.result-greeting,
+#resultado-documento {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.result-client {
+    margin: 4px 0 8px;
+    color: var(--principal);
+    font-size: 20px;
+}
+
+.result-rate-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--borde);
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.payout-panel {
+    margin: 16px 0;
+    padding: 18px;
+    border-left: 3px solid var(--principal);
+    background: #eeeeee;
+}
+
+.payout-panel p {
+    margin: 0 0 7px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+}
+
+.payout-panel strong {
+    display: block;
+    color: var(--principal);
+    font-size: 29px;
+}
+
+.breakdown {
+    margin: 0;
+}
+
+.breakdown div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.breakdown dt {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.breakdown dd {
+    margin: 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.net-row {
+    border-bottom: 0;
+}
+
+.page-footer {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    .topbar {
+        min-height: 62px;
+        padding: 0 16px;
+    }
+
+    .topbar > span {
+        max-width: 110px;
+        text-align: right;
+    }
+
+    .page-shell {
+        margin: 24px auto;
+    }
+
+    .workspace,
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .source-options {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

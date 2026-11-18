@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cambios El Dorado</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Encabezado de la página -->
+    <header class="topbar">
+        <div class="brand">
+            <strong>Cambios El Dorado</strong>
+        </div>
+
+        <span>Casa de cambio</span>
+    </header>
+
+    <main class="page-shell">
+
+        <!-- Presentación -->
+        <section class="intro">
+            <h1>Cambio de moneda</h1>
+            <p class="intro-copy">
+                Registra los datos del cliente y consulta el valor que debe recibir.
+            </p>
+        </section>
+
+        <div class="workspace">
+
+            <!-- Formulario -->
+            <section class="form-card">
+
+                <h2>Datos del cliente</h2>
+
+                <form id="formulario-cambio" novalidate>
+
+                    <div class="field-grid">
+
+                        <label class="field">
+                            <span>Nombre completo</span>
+                            <input
+                                type="text"
+                                id="nombre-cliente"
+                                placeholder="Ej. Ana Gómez"
+                                required>
+                        </label>
+
+                        <label class="field">
+                            <span>Documento de identidad</span>
+                            <input
+                                type="text"
+                                id="documento-cliente"
+                                placeholder="Solo números"
+                                inputmode="numeric"
+                                required>
+                        </label>
+
+                    </div>
+
+                    <hr>
+
+                    <h2>Monedas y monto</h2>
+
+                    <div class="field-grid">
+
+                        <label class="field">
+                            <span>Moneda que entrega</span>
+
+                            <select id="moneda-entrega">
+                                <option value="COP">COP - Peso colombiano</option>
+                                <option value="USD">USD - Dólar estadounidense</option>
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="MXN">MXN - Peso mexicano</option>
+                                <option value="GTQ">GTQ - Quetzal guatemalteco</option>
+                            </select>
+                        </label>
+
+                        <label class="field">
+                            <span>Monto que entrega</span>
+
+                            <input
+                                type="number"
+                                id="monto"
+                                placeholder="0.00"
+                                min="0.01"
+                                step="any"
+                                required>
+                        </label>
+
+                        <label class="field">
+                            <span>Moneda que desea comprar</span>
+
+                            <select id="moneda-compra">
+                                <option value="COP">COP - Peso colombiano</option>
+                                <option value="USD" selected>USD - Dólar estadounidense</option>
+                                <option value="EUR">EUR - Euro</option>
+                                <option value="MXN">MXN - Peso mexicano</option>
+                                <option value="GTQ">GTQ - Quetzal guatemalteco</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+                    <!-- Selección de la fuente de las tasas -->
+                    <fieldset class="source-fieldset">
+
+                        <legend>Fuente de la TRM</legend>
+
+                        <div class="source-options">
+
+                            <label class="source-option">
+                                <input
+                                    type="radio"
+                                    name="fuente"
+                                    value="json"
+                                    checked>
+                                Archivo JSON
+                            </label>
+
+                            <label class="source-option">
+                                <input
+                                    type="radio"
+                                    name="fuente"
+                                    value="api">
+                                API pública
+                            </label>
+
+                        </div>
+
+                    </fieldset>
+
+                    <!-- Mensajes del formulario -->
+                    <p id="mensaje-formulario" class="form-message"></p>
+
+                    <button
+                        type="submit"
+                        id="boton-calcular"
+                        class="calculate-button">
+
+                        Calcular cambio
+
+                    </button>
+
+                    <p class="form-footnote">
+                        La comisión aplicada es del 2 % sobre el valor en pesos colombianos.
+                    </p>
+
+                </form>
+
+            </section>
+
+            <!-- Resultados -->
+            <section class="result-card">
+
+                <h2>Resultado</h2>
+
+                <div id="resultado-inicial" class="result-placeholder">
+
+                    <p>
+                        Completa los datos del formulario para conocer
+                        cuánto dinero recibirá el cliente.
+                    </p>
+
+                </div>
+
+                <div id="contenido-resultado" hidden>
+
+                    <p class="result-greeting">
+                        Operación calculada para:
+                    </p>
+
+                    <h2 id="resultado-cliente" class="result-client"></h2>
+
+                    <p id="resultado-documento"></p>
+
+                    <div class="result-rate-line">
+
+                        <span id="resultado-fuente"></span>
+
+                        <span id="resultado-fecha"></span>
+
+                    </div>
+
+                    <div class="payout-panel">
+
+                        <p>EL CLIENTE RECIBE</p>
+
+                        <strong id="resultado-entregado"></strong>
+
+                        <span id="moneda-recibida"></span>
+
+                    </div>
+
+                    <dl class="breakdown">
+
+                        <div>
+                            <dt>TRM moneda entregada</dt>
+                            <dd id="tasa-moneda-entregada"></dd>
+                        </div>
+
+                        <div>
+                            <dt>TRM moneda comprada</dt>
+                            <dd id="tasa-moneda-comprada"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Valor recibido en COP</dt>
+                            <dd id="valor-bruto-cop"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Comisión (2 %)</dt>
+                            <dd id="comision-cop"></dd>
+                        </div>
+
+                        <div class="net-row">
+                            <dt>Neto en COP</dt>
+                            <dd id="neto-cop"></dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- Pie de página -->
+        <footer class="page-footer">
+            Cambios El Dorado - Servicio de conversión de divisas
+        </footer>
+
+        <footer class="page-footer">
+            Desarrollador: José David Marin
+        </footer>
+
+    </main>
+
+</body>
+</html>
